@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Kalkulator</title>
 </head>
-<body bgcolor="cyan">
+
+<body bgcolor="cyan"> 
     <b>
     <label for="input1"> Input nilai 1 : </label><input type="number"  placeholder="Masukan inputan pertama" id="input1">
     <br><br>
-    <label for="input2"> Input nilai 2 : </label><input type="numb  er" placeholder="Masukan inputan kedua" id="input2">
+    <label for="input2"> Input nilai 2 : </label><input type="number" placeholder="Masukan inputan kedua" id="input2">
     <br><br>
 
     <label>Pilih Fungsi : </label><br>
@@ -26,6 +27,15 @@
         <br>
         <input type="radio" id="bagi" name="operator" onclick="bagi()">
         <label>dibagi</label>
+        <br>
+        <input type="radio" id="modulus" name="operator" onclick="modulus()">
+        <label>modulus</label>
+        <br>
+        <input type="radio" id="persen" name="operator" onclick="persen()">
+        <label>persen</label>
+        <br>
+        <input type="radio" id="pangkat" name="operator" onclick="pangkat()">
+        <label>pangkat</label>
         <br><br>
 
     <label>Hasil</label>
@@ -33,11 +43,13 @@
 
         <input type="reset" onclick="reset()">
       </b>
-      
+
 <script>
     function AmbilNilai()
     {
+        // nilaisatu adalah (nilai[0])
         nilaisatu =document.getElementById("input1").value;
+        // nilaidua adalah (nilai[1])
         nilaidua =document.getElementById("input2").value;
         if (nilaisatu == "" || nilaidua == "")
         {
@@ -57,7 +69,6 @@
 
     function tambah()
     {
-        nilai = AmbilNilai();
         let prosestambah = 0;
         for (let a = 0; a < nilai.length; a++)
         {
@@ -88,6 +99,26 @@
 
     }
 
+    function modulus()
+    {
+        nilai = AmbilNilai();
+        prosesmodulus = parseInt(nilai[0]) % parseInt(nilai[1]);
+        return printhasil(prosesmodulus);
+    }
+
+    function persen()
+    {
+        nilai = AmbilNilai();
+        prosespersen = parseInt(nilai[0]) * (nilai[1]) / 100;
+        return printhasil(prosespersen);
+    }
+
+    function pangkat()
+    {
+        nilai = AmbilNilai();
+        prosespangkat = Math.pow (parseInt(nilai[0]), parseInt(nilai[1]));
+        return printhasil(prosespangkat);
+    }
     function reset()
     {
         document.getElementById('input1').value = '';
@@ -97,7 +128,13 @@
         document.getElementById('kurang').checked = false;
         document.getElementById('kali').checked = false;
         document.getElementById('bagi').checked = false;
+        document.getElementById('modulus').checked = false;
+        document.getElementById('persen').checked = false;
+        document.getElementById('pangkat').checked = false;
     }
+
+
+    
 
 </script>
 </body>
